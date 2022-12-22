@@ -11,23 +11,17 @@ import { Router } from '@angular/router';
 export class ReportesComponent implements OnInit {
   form: FormGroup;
   loading = false;
-
   constructor(private fb: FormBuilder, private _snackBar: MatSnackBar, private router:Router) {
     this.form = this.fb.group({
       email: ['', Validators.required],
       password: ['', Validators.required],
     });
-
   }
-
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
   ingresar(){
-    const usuario = this.form.value.email;
-    const contraseña = this.form.value.password;
-
-    if(usuario == 'admin' && contraseña == '123'){
+    const email = this.form.value.email;
+    const password = this.form.value.password;
+    if(email == 'admin' && password == '123'){
       this.fakeLoading();
     } else {
       this.error();
