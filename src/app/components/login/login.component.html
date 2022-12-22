@@ -1,0 +1,30 @@
+<div class="body">
+  <div class="login">
+    <mat-card *ngIf="!loading">
+      <mat-card-header>
+        <mat-card-title>Puedes ingresar?</mat-card-title>
+        <mat-card-subtitle *ngIf="acceso==true">user: admin / pass: 123</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-actions>
+        <button mat-button (click)="entrada()">No!</button>
+      </mat-card-actions>
+    </mat-card>
+    <mat-spinner diameter="50" *ngIf="loading" class="spinner"></mat-spinner>
+
+    <form *ngIf="!loading" [formGroup]="form" (ngSubmit)="ingresar()">
+      <img src="../../../assets/images/avatar.png" width="50%" alt="">
+      <h1>Login</h1>
+      <mat-form-field class="ancho" appearance="fill">
+        <mat-label>Usuario</mat-label>
+        <input matInput autocomplete="off" formControlName="usuario">
+      </mat-form-field>
+      <mat-form-field class="ancho" appearance="fill">
+        <mat-label>Contraseña</mat-label>
+        <input matInput autocomplete="off" type="password" formControlName="contraseña">
+      </mat-form-field>
+      <button type="submit" mat-raised-button color="primary" [disabled]="form.invalid"
+        class="ancho enviarbtn">Enviar</button>
+    </form>
+  </div>
+</div>
+
